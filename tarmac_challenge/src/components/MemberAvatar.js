@@ -4,15 +4,15 @@ import { Text, View, Image, StyleSheet, Dimensions, ImageBackground } from "reac
 
 const MemberAvatar = (props) => {
   return (
-    <ImageBackground
-      style={styles.image}
-      source={{uri: props.image}}
-      defaultSource={require('../assets/anonimo.png')}
-    >
-      <View style={styles.container}>
-        <Text style={styles.name}>{props.name}</Text>
-      </View>
-    </ImageBackground>
+      <ImageBackground
+        style={styles.image}
+        source={{uri: props.image}}
+        defaultSource={require('../assets/anonimo.png')}
+      >
+        <View style={styles.container}>
+          <Text style={styles.name}>{props.name}</Text>
+        </View>
+      </ImageBackground>
   );
 }
 
@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
   },
   name: {
     color: "#fff",
-    textShadowColor: 'rgba(0, 0, 0, 0.75)',
-    textShadowOffset: {width: -1, height: 1},
+    textShadowColor: 'rgba(111, 100, 184, 0.80)',
+    textShadowOffset: {width: -2, height: 2},
     textShadowRadius: 10,
     margin: 5,
     fontWeight: 'bold',

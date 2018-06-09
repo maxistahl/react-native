@@ -1,14 +1,14 @@
 import React from "react";
 import { View, Platform } from 'react-native';
 
-import AppNavigation from "../screens/AppNavigation";
+import MainScreen from "../screens/MainScreen";
 
 //console.disableYellowBox = true;
 
 const Root = props =>
-  <View style={styles.container}>
-    <AppNavigation />
-  </View>
+    <View style={styles.container}>
+      <MainScreen />
+    </View>
 
 export default Root;
 
@@ -16,6 +16,6 @@ const styles = {
   container: {
     flex: 1,
     backgroundColor: 'white',
-    paddingTop: Platform.OS === "android" ? 0 : 30
+    marginTop: Platform.OS === "android" ? 0 : 20  
   }
 };
