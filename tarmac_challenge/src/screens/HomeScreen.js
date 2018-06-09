@@ -1,33 +1,61 @@
 import React, { Component } from "react";
 import { AppRegistry, Dimensions, ScrollView, View, Text, StyleSheet, Platform, TouchableHighlight, Image, ImageBackground } from "react-native";
-
+import { connect } from 'react-redux';
+import { getMembers, selectMember } from '../actions';
 import MemberAvatar from "../components/MemberAvatar";
 
-const HomeScreen = (props) => {
-  console.log(props)
-  return (
-      <ScrollView >
-        <View style={styles.container}>
-          <View style={styles.bubbleContainer}>
-            <ImageBackground
-              style={styles.bubble}
-              source={require('../assets/team-up-bubble.png')}
-            >
-            <Text style={styles.bubbleText}>Let's Team Up</Text>
-            </ImageBackground>
+class HomeScreen extends Component {
+  
+  componentDidMount() {
+    this.props.getMembers();
+  }
+
+  selectMember = (member) => {
+    this.props.selectMember(member);
+    this.props.navigation.navigate('Member');
+  }
+
+  render(){
+    return (
+        <ScrollView>
+          <View style={styles.container}>
+            <View style={styles.bubbleContainer}>
+              <ImageBackground
+                style={styles.bubble}
+                source={require('../assets/team-up-bubble.png')}
+              >
+              <Text style={styles.bubbleText}>Let's Team Up</Text>
+              </ImageBackground>
+            </View>
+            {this.props.members.map( (member, key) => {
+                return (
+                  <TouchableHighlight key={key} underlayColor="white" onPress={() => {this.selectMember(member);}}>
+                    <MemberAvatar name={member.name} image={`http://tarmac.io/assets/members/${member.pic}.png`}/>
+                  </TouchableHighlight>
+                )
+              })
+            }
           </View>
-          {props.members.map( (member, key) => {
-              return (
-                <TouchableHighlight key={key} underlayColor="white" onPress={()=>{props.onPress(member);}}>
-                  <MemberAvatar name={member.name} image={`http://tarmac.io/assets/members/${member.pic}.png`}/>
-                </TouchableHighlight>
-              )
-            })
-          }
-        </View>
-      </ScrollView>
-    );
+        </ScrollView>
+      );
+    }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    members: state.members
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getMembers: () => dispatch(getMembers()),
+    selectMember: (member) => {console.log("SELECT MEMBER!!!"); dispatch(selectMember(member));}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
+
 
 const {height, width} = Dimensions.get('window');
 
@@ -71,5 +99,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default HomeScreen;
 

@@ -1,14 +1,21 @@
 import React from "react";
 import { View, Platform } from 'react-native';
 
+import configureStore from "../configureStore";
+import { Provider } from "react-redux";
+
 import MainScreen from "../screens/MainScreen";
+
+const store = configureStore();
 
 //console.disableYellowBox = true;
 
 const Root = props =>
+  <Provider store={store}>
     <View style={styles.container}>
-      <MainScreen />
+      <MainScreen style = {{backgroundColor: "white"}} ref={nav => {this.navigator = nav;}}/>
     </View>
+  </Provider>;
 
 export default Root;
 

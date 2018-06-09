@@ -1,59 +1,70 @@
 import React, { Component } from "react";
 import { Dimensions, ScrollView, View, Text, StyleSheet, TouchableHighlight, Image, ImageBackground, Linking } from "react-native";
-
+import { connect } from 'react-redux';
 import MemberAvatar from "../components/MemberAvatar";
 
-const HomeScreen = (props) => {
-  let member = props.member;
-  return (
-    <ScrollView >
-    <View style={styles.memberContainer}>
-      <View style={styles.imageContainer}>
-        <Image  
-          style={styles.image}
-          source={{uri: `http://tarmac.io/assets/members/${member.pic}.png`}}
-          defaultSource={require('../assets/anonimo.png')}>
-        </Image>
-      </View>
-      <View style={styles.infoContainer}>
-        <View style={styles.infoLeft}>
-          <Text style={styles.name}> {member.name} </Text>
-          <Text style={styles.role}> {member.role} </Text>
-          {member.description && 
-            <Text style={styles.description}> {member.description} </Text>
-          }
+class MemberScreen extends Component {
+  
+  render() {
+    const member = this.props.memberSelected;
+    return (
+      <ScrollView >
+      <View style={styles.memberContainer}>
+        <View style={styles.imageContainer}>
+          <Image  
+            style={styles.image}
+            source={{uri: `http://tarmac.io/assets/members/${member.pic}.png`}}
+            defaultSource={require('../assets/anonimo.png')}>
+          </Image>
         </View>
-        <View style={styles.infoRight}>
-          {member.twitter && 
-            <TouchableHighlight style={styles.socialImage} onPress={() => {Linking.openURL(member.twitter)}} underlayColor="white">
-              <Image
-                style={styles.socialImage}
-                source={require('../assets/twitter.png')}
-              />
-            </TouchableHighlight>
-          }
-          {member.github && 
-            <TouchableHighlight style={styles.socialImage} onPress={() => {Linking.openURL(member.github)}} underlayColor="white">
-              <Image
-                style={styles.socialImage}
-                source={require('../assets/github.png')}
-              />
-            </TouchableHighlight>
-          }
+        <View style={styles.infoContainer}>
+          <View style={styles.infoLeft}>
+            <Text style={styles.name}> {member.name} </Text>
+            <Text style={styles.role}> {member.role} </Text>
+            {member.description && 
+              <Text style={styles.description}> {member.description} </Text>
+            }
+          </View>
+          <View style={styles.infoRight}>
+            {member.twitter && 
+              <TouchableHighlight style={styles.socialImage} onPress={() => {Linking.openURL(member.twitter)}} underlayColor="white">
+                <Image
+                  style={styles.socialImage}
+                  source={require('../assets/twitter.png')}
+                />
+              </TouchableHighlight>
+            }
+            {member.github && 
+              <TouchableHighlight style={styles.socialImage} onPress={() => {Linking.openURL(member.github)}} underlayColor="white">
+                <Image
+                  style={styles.socialImage}
+                  source={require('../assets/github.png')}
+                />
+              </TouchableHighlight>
+            }
+          </View>
         </View>
+        <TouchableHighlight style={styles.backContainer} onPress={() => this.props.navigation.navigate('Home')} underlayColor="white">
+          <ImageBackground
+            style={styles.back}
+            source={require('../assets/button-background.png')}
+          >
+          <Text style={styles.backText}>Back</Text>
+          </ImageBackground>
+        </TouchableHighlight>
       </View>
-      <TouchableHighlight style={styles.backContainer} onPress={props.onPress} underlayColor="white">
-        <ImageBackground
-          style={styles.back}
-          source={require('../assets/button-background.png')}
-        >
-        <Text style={styles.backText}>Back</Text>
-        </ImageBackground>
-      </TouchableHighlight>
-    </View>
-    </ScrollView>
+      </ScrollView>
     );
+  }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    memberSelected: state.memberSelected
+  }
+}
+
+export default connect(mapStateToProps, null)(MemberScreen);
 
 const {height, width} = Dimensions.get('window');
 
@@ -126,5 +137,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default HomeScreen;
 
