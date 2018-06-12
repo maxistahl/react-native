@@ -1,0 +1,310 @@
+import { generateId } from "./helpers";
+
+// REST server simulation
+
+const fakeDatabase = {
+  members: [  
+    {  
+       "id": generateId(),
+       "name":"Eugenia Díaz Arnesto",
+       "role":"Developer",
+       "pic":"eugenia-diaz-arnesto",
+       "github":"https://github.com/eugediaz",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Cecilia Marcora",
+       "role":"Developer",
+       "pic":"cecilia-marcora",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Sabrina Lattanzio",
+       "role":"QA",
+       "pic":"sabrina-lattanzio",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Andrés Segurola",
+       "role":"Developer",
+       "pic":"andres-segurola",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Agustín Cornú",
+       "role":"Developer",
+       "pic":"agustin-cornu",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Sebastián Beceiro",
+       "role":"Developer",
+       "pic":"seba-beceiro",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Alvaro Scuccimarra",
+       "role":"Developer",
+       "pic":"alvaro-scuccimarra",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Gonzalo Robaina",
+       "role":"Developer",
+       "pic":"gonzalo-robaina",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Federico Zagarzazu",
+       "role":"Developer",
+       "pic":"federico-zagarzazu",
+       "github":"https://github.com/fzagarzazu",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Gabriel Osorio",
+       "role":"Developer ",
+       "pic":"gabriel-osorio",
+       "width":"500",
+       "height":"500",
+       "github":"https://github.com/gabrielosorio",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Gonzalo Melgar",
+       "role":"Developer",
+       "pic":"gonzalo-melgar",
+       "width":"500",
+       "height":"500",
+       "github":"https://github.com/gmelgaba",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Ignacio Facello",
+       "role":"Developer",
+       "pic":"ignacio-facello",
+       "github":"https://github.com/nachof",
+       "width":"500",
+       "height":"500",
+       "twitter":"http://twitter.com/nachof",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Juan Peón",
+       "role":"Developer",
+       "pic":"juan-peon",
+       "github":"https://github.com/nemesys101",
+       "width":"500",
+       "height":"500",
+       "twitter":"http://twitter.com/neme101",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Juan Rodríguez",
+       "role":"Developer",
+       "pic":"juan-rodriguez",
+       "github":"https://github.com/jandresrodriguez",
+       "width":"500",
+       "height":"500",
+       "twitter":"http://twitter.com/juan89andres",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Julio Pintos",
+       "role":"Developer",
+       "pic":"julio-pintos",
+       "github":"https://github.com/julio-pintos",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Marcelo Bevegni",
+       "role":"Operations",
+       "pic":"marcelo-bevegni",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Mauricio Piñatares",
+       "role":"Developer",
+       "pic":"mauricio-pinatares",
+       "github":"https://github.com/chucho13",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Mauricio Souto",
+       "role":"Developer",
+       "pic":"mauricio-souto",
+       "github":"https://github.com/mauriciosouto",
+       "width":"500",
+       "height":"500",
+       "twitter":"http://twitter.com/maurisouto",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Pablo Caviglia",
+       "role":"Developer",
+       "pic":"pablo-caviglia",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Pablo Monfort",
+       "role":"Developer",
+       "pic":"pablo-monfort",
+       "github":"https://github.com/pmonfort",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Pablo Pazos",
+       "role":"Developer",
+       "pic":"pablo-pazos",
+       "github":"https://github.com/ppazos",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Pedro Neyeloff",
+       "role":"Developer",
+       "pic":"pedro-neyeloff",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Rodrigo Dutra",
+       "role":"Developer",
+       "pic":"rodrigo-dutra",
+       "github":"https://github.com/rdutra",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Rodrigo Machado",
+       "role":"Developer",
+       "pic":"rodrigo-machado",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Rodrigo Ordeix",
+       "role":"Developer",
+       "pic":"rodrigo-ordeix",
+       "github":"https://github.com/rordeix",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Sebastián Sierra",
+       "role":"Developer",
+       "pic":"sebastian-sierra",
+       "github":"https://github.com/sebastiansier",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Magdalena Ezeiza",
+       "role":"Finance Manager",
+       "pic":"magdalena-ezeiza",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Diego Pedemonte",
+       "role":"Developer",
+       "pic":"diego-pedemonte",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Damián Arrillaga",
+       "role":"Developer",
+       "pic":"damian-arrillaga",
+       "width":"500",
+       "height":"500",
+       "description":""
+    },
+    {  
+       "id": generateId(),
+       "name":"Juan Olivera",
+       "role":"Developer",
+       "pic":"juan-olivera",
+       "width":"500",
+       "height":"500",
+       "description":""
+    }
+ ]
+ 
+};
+
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+export const fetchMembers = () =>
+  delay(500).then(() => {
+    return fakeDatabase.members.sort(function() { return 0.5 - Math.random() });;
+  });
+
+// export const fetchMember = (memberName) =>
+//   delay(500).then(() => {
+//     return fakeDatabase.members;
+//   });
