@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User Image Rendering if the image uri provided is not available, render a default image 1`] = `ShallowWrapper {}`;
+
+exports[`User Image Rendering if the image uri provided response a status 200, render the image as expected 1`] = `"received is not a function"`;
